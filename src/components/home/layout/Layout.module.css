@@ -1,0 +1,23 @@
+.area {
+  position: relative;
+  top: 90px;
+  margin: 0 auto;
+  width: 1280px;
+  height: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box {
+  width: 600px;
+  height: 740px;
+  background-color: #616261;
+  border-radius: 12px;
+}
+
+.left {
+}
+
+.right {
+}
