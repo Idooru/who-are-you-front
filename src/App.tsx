@@ -1,11 +1,10 @@
 import React from 'react';
+import Layout from './components/home/layout/Layout';
 
 function App() {
-  const title = 'who are you';
-
   return (
     <div className="App">
-      <h1>{title}</h1>
+      <Layout />
     </div>
   );
 }
