@@ -1,0 +1,35 @@
+.box {
+  width: 670px;
+  height: 740px;
+  background-color: #56b7a9;
+  border-radius: 20px;
+}
+
+.font {
+  color: white;
+  font-weight: bolder;
+  text-shadow: 4px 2px 9px #101010;
+  font-family: 'JetBrains Mono';
+  letter-spacing: 12px;
+}
+
+#who {
+  font-size: 220px;
+  position: absolute;
+  top: 55px;
+  left: 60px;
+}
+
+#are {
+  font-size: 190px;
+  position: absolute;
+  top: 265px;
+  left: 210px;
+}
+
+#you {
+  font-size: 205px;
+  position: absolute;
+  top: 440px;
+  left: 90px;
+}
