@@ -1,0 +1,11 @@
+.sort_box {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.none_line {
+  outline: none;
+  border: none;
+}
