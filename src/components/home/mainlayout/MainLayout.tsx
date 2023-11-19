@@ -1,9 +1,9 @@
-import layoutStyle from './Layout.module.css';
+import layoutStyle from './MainLayout.module.css';
 import Title from '../title/Title';
 import Login from '../login/Login';
 import SubTitle from '../subtitle/SubTitle';
 
-const Layout = () => {
+const MainLayout = () => {
   return (
     <div className={layoutStyle.area}>
       <Title />
@@ -15,4 +15,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default MainLayout;
