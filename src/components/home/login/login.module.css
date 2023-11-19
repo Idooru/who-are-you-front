@@ -1,8 +1,10 @@
 .box {
+  position: relative;
   width: 620px;
-  height: 400px;
+  height: 410px;
   background-color: rgba(115, 115, 115, 0.76);
   border-radius: 80px;
+  top: 5px;
 }
 
 .icons {
@@ -40,7 +42,7 @@
   top: 40px;
   width: 100px;
   height: 40px;
-  font-family: 'JetBrains Mono';
+  font-family: 'Corbel Light';
   letter-spacing: 2px;
   font-size: 40px;
   color: white;
@@ -73,7 +75,8 @@ form {
   width: 100px;
   height: 30px;
   background-color: #56b7a9;
-  font-family: 'JetBrains Mono';
+  font-family: 'Corbel M';
+  font-weight: bolder;
   border-radius: 15px;
   cursor: pointer;
 }
