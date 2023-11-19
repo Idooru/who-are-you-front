@@ -1,11 +1,20 @@
 import React from 'react';
-import MainLayout from './components/home/mainlayout/MainLayout';
+import { Route, Routes } from 'react-router-dom';
+import HomeLayout from './components/home/homelayout/HomeLayout';
+import RegisterLayout from './components/user/register/registerlayout/RegisterLayout';
+import RetrieveLayout from './components/user/retrieve/retrievelayout/RetrieveLayout';
 
 function App() {
   return (
-    <div className="App">
-      <MainLayout />
-    </div>
+    <>
+      <Routes>
+        <Route path={'/'} element={<HomeLayout />} />
+        <Route path={'/user'}>
+          <Route path={'register'} element={<RegisterLayout />} />
+          <Route path={'recovery'} element={<RetrieveLayout />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
