@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import loginStyle from './login.module.css';
@@ -78,8 +79,12 @@ const Login = () => {
           </form>
         </div>
         <div id={loginStyle.option} className={'sort_box'}>
-          <a className={loginStyle.font_style}>Register</a>
-          <a className={loginStyle.font_style}>Find Account</a>
+          <Link className={loginStyle.font_style} to={'/user/register'}>
+            Register
+          </Link>
+          <Link className={loginStyle.font_style} to={'/user/recovery'}>
+            Retrieve Account
+          </Link>
         </div>
       </div>
     </>
