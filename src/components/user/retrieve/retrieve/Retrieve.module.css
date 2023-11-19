@@ -1,0 +1,34 @@
+.box {
+  width: 620px;
+  height: 520px;
+  background-color: rgba(115, 115, 115, 0.76);
+  border-radius: 80px;
+}
+
+.choice_box {
+  width: 220px;
+  height: 100px;
+  background-color: whitesmoke;
+}
+
+#query {
+  position: relative;
+  top: 70px;
+  width: 520px;
+}
+
+#font_style {
+  text-indent: 14px;
+  font-family: 'Dialog';
+  color: whitesmoke;
+  font-size: 19px;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+}
+
+#form {
+  position: relative;
+  top: 90px;
+  width: 500px;
+  height: 220px;
+}
