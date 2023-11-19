@@ -60,21 +60,6 @@ form {
   margin-left: 10px;
 }
 
-#submit_button {
-  width: 100px;
-  height: 30px;
-  background-color: #56b7a9;
-  font-family: 'Corbel M';
-  font-weight: bolder;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
-#submit_button:hover {
-  background-color: black;
-  color: #56b7a9;
-}
-
 #option {
   position: relative;
   top: 65px;

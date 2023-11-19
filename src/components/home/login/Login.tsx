@@ -38,11 +38,11 @@ const Login = () => {
         <div id={loginStyle.form} className={'sort_box'}>
           <form>
             <label htmlFor={'email_input'}>
-              <FontAwesomeIcon icon={faEnvelope} className={loginStyle.icons} />
+              <FontAwesomeIcon icon={faEnvelope} className={'icons'} />
             </label>
             <input
               id={'email_input'}
-              className={`${loginStyle.input_box} none_line`}
+              className={'input_box none_line'}
               type={'text'}
               placeholder={'Email'}
               onChange={onChangeEmail}
@@ -54,7 +54,7 @@ const Login = () => {
             </label>
             <input
               id={'password_input'}
-              className={`${loginStyle.input_box} none_line`}
+              className={'input_box none_line'}
               type={'password'}
               placeholder={'password'}
               onChange={onChangePassword}
@@ -70,8 +70,7 @@ const Login = () => {
               </p>
             </div>
             <input
-              id={loginStyle.submit_button}
-              className={'sort_box none_line'}
+              className={'submit_button sort_box none_line'}
               type={'submit'}
               value={'LOGIN'}
               onClick={onSubmit}
