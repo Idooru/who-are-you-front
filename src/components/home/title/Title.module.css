@@ -6,30 +6,29 @@
 }
 
 .font {
-  color: white;
-  font-weight: bolder;
-  text-shadow: 4px 2px 9px #101010;
-  font-family: 'JetBrains Mono';
+  color: azure;
+  font-weight: 600;
+  font-family: 'Bahnschrift';
   letter-spacing: 12px;
 }
 
 #who {
   font-size: 220px;
   position: absolute;
-  top: 55px;
+  top: 75px;
   left: 60px;
 }
 
 #are {
   font-size: 190px;
   position: absolute;
-  top: 265px;
+  top: 285px;
   left: 210px;
 }
 
 #you {
   font-size: 205px;
   position: absolute;
-  top: 440px;
-  left: 90px;
+  top: 460px;
+  left: 80px;
 }
