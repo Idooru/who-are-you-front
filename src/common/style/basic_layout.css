@@ -1,0 +1,15 @@
+.area {
+  position: relative;
+  top: 90px;
+  margin: 0 auto;
+  width: 1280px;
+  height: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+}
