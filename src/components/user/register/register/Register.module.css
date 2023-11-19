@@ -1,0 +1,25 @@
+.box {
+  position: relative;
+  width: 620px;
+  height: 680px;
+  background-color: rgba(115, 115, 115, 0.76);
+  border-radius: 80px;
+}
+
+#form {
+  position: relative;
+  width: 570px;
+  height: 520px;
+  top: 80px;
+}
+
+#default_image {
+  width: 140px;
+  height: 140px;
+  border-radius: 70px;
+}
+
+.image_text {
+  position: relative;
+  top: -7px;
+}
