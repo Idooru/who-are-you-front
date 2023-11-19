@@ -37,17 +37,6 @@
   font-family: Calibri;
 }
 
-#title {
-  position: relative;
-  top: 40px;
-  width: 100px;
-  height: 40px;
-  font-family: 'Corbel Light';
-  letter-spacing: 2px;
-  font-size: 40px;
-  color: white;
-}
-
 #form {
   position: relative;
   top: 45px;

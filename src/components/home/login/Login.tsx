@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <>
       <div className={loginStyle.box}>
-        <div id={loginStyle.title} className={'sort_box'}>
+        <div className={'title sort_box'}>
           <p>LOGIN</p>
         </div>
         <div id={loginStyle.form} className={'sort_box'}>
