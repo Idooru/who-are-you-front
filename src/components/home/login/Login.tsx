@@ -81,8 +81,11 @@ const Login = () => {
           <Link className={loginStyle.font_style} to={'/user/register'}>
             Register
           </Link>
-          <Link className={loginStyle.font_style} to={'/user/recovery'}>
-            Retrieve Account
+          <Link
+            className={loginStyle.font_style}
+            to={'/user/recovery/password'}
+          >
+            Forgot Password
           </Link>
         </div>
       </div>

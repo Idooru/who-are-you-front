@@ -11,7 +11,7 @@ function App() {
         <Route path={'/'} element={<HomeLayout />} />
         <Route path={'/user'}>
           <Route path={'register'} element={<RegisterLayout />} />
-          <Route path={'recovery'} element={<RetrieveLayout />} />
+          <Route path={'recovery/password'} element={<RetrieveLayout />} />
         </Route>
       </Routes>
     </>
