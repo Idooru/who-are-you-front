@@ -1,13 +1,13 @@
-import homeLayoutStyle from './HomeLayout.module.css';
+import '../../../common/style/basic_layout.css';
 import Title from '../title/Title';
 import Login from '../login/Login';
 import SubTitle from '../subtitle/SubTitle';
 
 const HomeLayout = () => {
   return (
-    <div className={homeLayoutStyle.area}>
+    <div className={'area'}>
       <Title />
-      <div className={homeLayoutStyle.right}>
+      <div className={'right'}>
         <SubTitle />
         <Login />
       </div>
