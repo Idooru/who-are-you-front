@@ -1,13 +1,13 @@
-import layoutStyle from './MainLayout.module.css';
+import homeLayoutStyle from './HomeLayout.module.css';
 import Title from '../title/Title';
 import Login from '../login/Login';
 import SubTitle from '../subtitle/SubTitle';
 
-const MainLayout = () => {
+const HomeLayout = () => {
   return (
-    <div className={layoutStyle.area}>
+    <div className={homeLayoutStyle.area}>
       <Title />
-      <div className={layoutStyle.right}>
+      <div className={homeLayoutStyle.right}>
         <SubTitle />
         <Login />
       </div>
@@ -15,4 +15,4 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export default HomeLayout;
