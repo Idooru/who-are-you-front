@@ -45,6 +45,15 @@
   color: whitesmoke;
 }
 
+.error_box {
+  position: relative;
+  top: 1px;
+  left: 25px;
+  font-size: 13.8px;
+  color: #980e0e;
+  height: 0;
+}
+
 .submit_button {
   width: 100px;
   height: 30px;
@@ -58,4 +67,10 @@
 .submit_button:hover {
   background-color: black;
   color: #56b7a9;
+}
+
+.submit_button:disabled {
+  background-color: #a4a4a4;
+  color: white;
+  cursor: auto;
 }
