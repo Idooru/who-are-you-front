@@ -53,6 +53,7 @@ form {
   display: flex;
   align-items: center;
   height: 50px;
+  margin-top: 4px;
   margin-left: 25px;
 }
 
