@@ -49,8 +49,9 @@
   position: relative;
   top: 1px;
   left: 25px;
-  font-size: 13.8px;
+  font-size: 14px;
   color: #980e0e;
+  font-family: 'Bahnschrift';
   height: 0;
 }
 
