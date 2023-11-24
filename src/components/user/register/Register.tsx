@@ -1,5 +1,5 @@
 import registerStyle from './Register.module.css';
-import '../../../../common/style/common.css';
+import '../../../common/style/common.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCamera,
@@ -9,7 +9,7 @@ import {
   faKey,
 } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useRef, useState } from 'react';
-import defaultUserImg from '../../../../assets/user/default_user.jpg';
+import defaultUserImg from '../../../assets/user/default_user.jpg';
 
 const Register = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -82,7 +82,7 @@ const Register = () => {
             id={registerStyle.default_image}
             className={'sort_box'}
             src={defaultUserImg}
-            alt={'profile image'}
+            alt={'profile images'}
             ref={imageRef}
           />
           <label id={registerStyle.image_label} htmlFor={'image_input'}>
