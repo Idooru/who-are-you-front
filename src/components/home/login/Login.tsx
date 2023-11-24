@@ -3,15 +3,40 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import loginStyle from './login.module.css';
 import '../../../common/style/common.css';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import {
+  EmailState,
+  IsValidEmailState,
+  IsValidPasswordState,
+  NotAllowState,
+  PasswordState,
+} from '../../../common/hooks/UserInputStateType';
+import { handleEmail } from '../../../utils/handleEmail';
+import { handlePassword } from '../../../utils/handlePassword';
+import ShowEmailError from '../../user/common/ShowEmailError';
+import ShowPasswordError from '../../user/common/ShowPasswordError';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+interface LoginProps {
+  emailState: EmailState;
+  passwordState: PasswordState;
+  isValidEmailState: IsValidEmailState;
+  isValidPasswordState: IsValidPasswordState;
+  notAllowState: NotAllowState;
+}
 
-  const [isValidEmail, setIsValidEmail] = useState(false);
-  const [isValidPassword, setIsValidPassword] = useState(false);
-  const [notAllow, setNotAllow] = useState(true);
+const Login = ({
+  emailState,
+  passwordState,
+  isValidEmailState,
+  isValidPasswordState,
+  notAllowState,
+}: LoginProps) => {
+  const [email, setEmail] = emailState;
+  const [password, setPassword] = passwordState;
+
+  const [isValidEmail, setIsValidEmail] = isValidEmailState;
+  const [isValidPassword, setIsValidPassword] = isValidPasswordState;
+  const [notAllow, setNotAllow] = notAllowState;
 
   const emailInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -23,26 +48,8 @@ const Login = () => {
     isValidEmail && isValidPassword ? setNotAllow(false) : setNotAllow(true);
   }, [isValidEmail, isValidPassword]);
 
-  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    regex.test(email) ? setIsValidEmail(true) : setIsValidEmail(false);
-  };
-
-  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-    const regex =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-    regex.test(password) ? setIsValidPassword(true) : setIsValidPassword(false);
-  };
-
   const onSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
-
-    console.log(email);
-    console.log(password);
   };
 
   return (
@@ -61,15 +68,14 @@ const Login = () => {
               className={'input_box none_line'}
               type={'text'}
               placeholder={'Email'}
-              onChange={onChangeEmail}
+              onChange={(event) =>
+                handleEmail({ event, email, setEmail, setIsValidEmail })
+              }
               ref={emailInputRef}
               autoComplete={'off'}
+              maxLength={25}
             />
-            {!isValidEmail && email.length > 0 && (
-              <div className={'error_box'}>
-                Please format your email correctly
-              </div>
-            )}
+            <ShowEmailError email={email} isValidEmail={isValidEmail} />
             <label htmlFor={'password_input'}>
               <FontAwesomeIcon icon={faLock} className={loginStyle.icons} />
             </label>
@@ -78,14 +84,21 @@ const Login = () => {
               className={'input_box none_line'}
               type={'password'}
               placeholder={'password'}
-              onChange={onChangePassword}
+              onChange={(event) =>
+                handlePassword({
+                  event,
+                  password,
+                  setPassword,
+                  setIsValidPassword,
+                })
+              }
               autoComplete={'off'}
+              maxLength={30}
             />
-            {!isValidPassword && password.length > 0 && (
-              <div className={'error_box'}>
-                Please format your password correctly
-              </div>
-            )}
+            <ShowPasswordError
+              password={password}
+              isValidPassword={isValidPassword}
+            />
             <div id={loginStyle.remember_user}>
               <input type={'checkbox'} />
               <p

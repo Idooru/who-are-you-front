@@ -2,36 +2,77 @@ import retrieveStyle from './Retrieve.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faKey, faLock } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useRef, useState } from 'react';
+import {
+  EmailState,
+  IsValidEmailState,
+  IsValidPasswordCorrectState,
+  IsValidPasswordState,
+  NotAllowState,
+  PasswordCorrectState,
+  PasswordState,
+} from '../../../common/hooks/UserInputStateType';
+import { useNavigate } from 'react-router-dom';
+import ShowEmailError from '../common/ShowEmailError';
+import { handleEmail } from '../../../utils/handleEmail';
+import { handlePassword } from '../../../utils/handlePassword';
+import ShowPasswordError from '../common/ShowPasswordError';
+import { handlePasswordCorrect } from '../../../utils/handlePasswordCorrect';
+import ShowPasswordCorrectError from '../common/ShowPasswordCorrectError';
 
-const Retrieve = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordCorrect, setPasswordCorrect] = useState('');
+interface RetrieveProps {
+  emailState: EmailState;
+  passwordState: PasswordState;
+  passwordCorrectState: PasswordCorrectState;
+  isValidEmailState: IsValidEmailState;
+  isValidPasswordState: IsValidPasswordState;
+  isValidPasswordCorrectState: IsValidPasswordCorrectState;
+  notAllowState: NotAllowState;
+}
+
+const Retrieve = ({
+  emailState,
+  passwordState,
+  passwordCorrectState,
+  isValidEmailState,
+  isValidPasswordState,
+  isValidPasswordCorrectState,
+  notAllowState,
+}: RetrieveProps) => {
+  const [email, setEmail] = emailState;
+  const [password, setPassword] = passwordState;
+  const [passwordCorrect, setPasswordCorrect] = passwordCorrectState;
+
+  const [isValidEmail, setIsValidEmail] = isValidEmailState;
+  const [isValidPassword, setIsValidPassword] = isValidPasswordState;
+  const [isValidPasswordCorrect, setIsValidPasswordCorrect] =
+    isValidPasswordCorrectState;
+
+  const [notAllow, setNotAllow] = notAllowState;
 
   const emailInputRef = useRef<HTMLInputElement | null>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     emailInputRef.current?.focus();
   }, []);
 
-  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
+  useEffect(() => {
+    password === passwordCorrect
+      ? setIsValidPasswordCorrect(true)
+      : setIsValidPasswordCorrect(false);
+  }, [password, passwordCorrect]);
 
-  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const onChangePasswordCorrect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPasswordCorrect(e.target.value);
-  };
+  useEffect(() => {
+    isValidEmail && isValidPassword && isValidPasswordCorrect
+      ? setNotAllow(false)
+      : setNotAllow(true);
+  }, [isValidEmail, isValidPassword, isValidPasswordCorrect]);
 
   const onSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
 
-    console.log(email);
-    console.log(password);
-    console.log(passwordCorrect);
+    navigate('/', { replace: true });
   };
 
   return (
@@ -55,10 +96,14 @@ const Retrieve = () => {
             className={'input_box none_line'}
             type={'text'}
             placeholder={'Email'}
-            onChange={onChangeEmail}
+            onChange={(event) =>
+              handleEmail({ event, email, setEmail, setIsValidEmail })
+            }
             autoComplete={'off'}
             ref={emailInputRef}
+            maxLength={25}
           />
+          <ShowEmailError email={email} isValidEmail={isValidEmail} />
           <label htmlFor={'password_input'}>
             <FontAwesomeIcon icon={faLock} className={'icons'} />
           </label>
@@ -67,8 +112,20 @@ const Retrieve = () => {
             className={'input_box none_line'}
             type={'password'}
             placeholder={'New password'}
-            onChange={onChangePassword}
+            onChange={(event) =>
+              handlePassword({
+                event,
+                password,
+                setPassword,
+                setIsValidPassword,
+              })
+            }
             autoComplete={'off'}
+            maxLength={30}
+          />
+          <ShowPasswordError
+            password={password}
+            isValidPassword={isValidPassword}
           />
           <label htmlFor={'password_correct_input'}>
             <FontAwesomeIcon icon={faKey} className={'icons'} />
@@ -78,10 +135,18 @@ const Retrieve = () => {
             className={'input_box none_line'}
             type={'password'}
             placeholder={'New password correct'}
-            onChange={onChangePasswordCorrect}
+            onChange={(event) =>
+              handlePasswordCorrect({ event, setPasswordCorrect })
+            }
             autoComplete={'off'}
+            maxLength={30}
+          />
+          <ShowPasswordCorrectError
+            password={password}
+            passwordCorrect={passwordCorrect}
           />
           <input
+            disabled={notAllow}
             style={{ marginTop: '25px' }}
             className={'submit_button sort_box none_line'}
             type={'submit'}
