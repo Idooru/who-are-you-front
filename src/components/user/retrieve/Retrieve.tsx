@@ -1,7 +1,7 @@
 import retrieveStyle from './Retrieve.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faKey, faLock } from '@fortawesome/free-solid-svg-icons';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   EmailState,
   IsValidEmailState,
