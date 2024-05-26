@@ -2,15 +2,6 @@ import retrieveStyle from './Retrieve.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faKey, faLock } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useRef } from 'react';
-import {
-  EmailState,
-  IsValidEmailState,
-  IsValidPasswordCorrectState,
-  IsValidPasswordState,
-  NotAllowState,
-  PasswordCorrectState,
-  PasswordState,
-} from '../../../common/hooks/UserInputStateType';
 import { useNavigate } from 'react-router-dom';
 import ShowEmailError from '../common/ShowEmailError';
 import { handleEmail } from '../../../utils/handleEmail';
@@ -18,26 +9,19 @@ import { handlePassword } from '../../../utils/handlePassword';
 import ShowPasswordError from '../common/ShowPasswordError';
 import { handlePasswordCorrect } from '../../../utils/handlePasswordCorrect';
 import ShowPasswordCorrectError from '../common/ShowPasswordCorrectError';
+import UseUserInput from '../../../common/hooks/useUserInput';
 
-interface RetrieveProps {
-  emailState: EmailState;
-  passwordState: PasswordState;
-  passwordCorrectState: PasswordCorrectState;
-  isValidEmailState: IsValidEmailState;
-  isValidPasswordState: IsValidPasswordState;
-  isValidPasswordCorrectState: IsValidPasswordCorrectState;
-  notAllowState: NotAllowState;
-}
+const Retrieve = () => {
+  const {
+    emailState,
+    passwordState,
+    passwordCorrectState,
+    isValidEmailState,
+    isValidPasswordState,
+    isValidPasswordCorrectState,
+    notAllowState,
+  } = UseUserInput();
 
-const Retrieve = ({
-  emailState,
-  passwordState,
-  passwordCorrectState,
-  isValidEmailState,
-  isValidPasswordState,
-  isValidPasswordCorrectState,
-  notAllowState,
-}: RetrieveProps) => {
   const [email, setEmail] = emailState;
   const [password, setPassword] = passwordState;
   const [passwordCorrect, setPasswordCorrect] = passwordCorrectState;

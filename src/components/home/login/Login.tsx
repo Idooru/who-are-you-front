@@ -4,33 +4,21 @@ import { faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import loginStyle from './login.module.css';
 import '../../../common/style/common.css';
 import React, { useEffect, useRef } from 'react';
-import {
-  EmailState,
-  IsValidEmailState,
-  IsValidPasswordState,
-  NotAllowState,
-  PasswordState,
-} from '../../../common/hooks/UserInputStateType';
 import { handleEmail } from '../../../utils/handleEmail';
 import { handlePassword } from '../../../utils/handlePassword';
 import ShowEmailError from '../../user/common/ShowEmailError';
 import ShowPasswordError from '../../user/common/ShowPasswordError';
+import useUserInput from '../../../common/hooks/useUserInput';
 
-interface LoginProps {
-  emailState: EmailState;
-  passwordState: PasswordState;
-  isValidEmailState: IsValidEmailState;
-  isValidPasswordState: IsValidPasswordState;
-  notAllowState: NotAllowState;
-}
+const Login = () => {
+  const {
+    emailState,
+    passwordState,
+    isValidEmailState,
+    isValidPasswordState,
+    notAllowState,
+  } = useUserInput();
 
-const Login = ({
-  emailState,
-  passwordState,
-  isValidEmailState,
-  isValidPasswordState,
-  notAllowState,
-}: LoginProps) => {
   const [email, setEmail] = emailState;
   const [password, setPassword] = passwordState;
 
@@ -46,7 +34,7 @@ const Login = ({
 
   useEffect(() => {
     isValidEmail && isValidPassword ? setNotAllow(false) : setNotAllow(true);
-  }, [isValidEmail, isValidPassword]);
+  }, [isValidEmail, isValidPassword, setNotAllow]);
 
   const onSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();

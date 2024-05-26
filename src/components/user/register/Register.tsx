@@ -10,18 +10,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useRef } from 'react';
 import defaultUserImg from '../../../assets/user/default_user.jpg';
-import {
-  EmailState,
-  ImageState,
-  IsValidEmailState,
-  IsValidNicknameState,
-  IsValidPasswordState,
-  IsValidPasswordCorrectState,
-  NicknameState,
-  NotAllowState,
-  PasswordCorrectState,
-  PasswordState,
-} from '../../../common/hooks/UserInputStateType';
 import { handleNickname } from '../../../utils/handleNickname';
 import { handleEmail } from '../../../utils/handleEmail';
 import { handlePassword } from '../../../utils/handlePassword';
@@ -32,32 +20,23 @@ import ShowEmailError from '../common/ShowEmailError';
 import ShowPasswordError from '../common/ShowPasswordError';
 import ShowPasswordCorrectError from '../common/ShowPasswordCorrectError';
 import { useNavigate } from 'react-router-dom';
+import { registerApi } from '../../../api/user/user_api';
+import useUserInput from '../../../common/hooks/useUserInput';
 
-interface RegisterProps {
-  imageState: ImageState;
-  nicknameState: NicknameState;
-  emailState: EmailState;
-  passwordState: PasswordState;
-  passwordCorrectState: PasswordCorrectState;
-  isValidNicknameState: IsValidNicknameState;
-  isValidEmailState: IsValidEmailState;
-  isValidPasswordState: IsValidPasswordState;
-  isValidPasswordCorrectState: IsValidPasswordCorrectState;
-  notAllowState: NotAllowState;
-}
+const Register = () => {
+  const {
+    imageState,
+    nicknameState,
+    emailState,
+    passwordState,
+    passwordCorrectState,
+    isValidNicknameState,
+    isValidEmailState,
+    isValidPasswordState,
+    isValidPasswordCorrectState,
+    notAllowState,
+  } = useUserInput();
 
-const Register = ({
-  imageState,
-  nicknameState,
-  emailState,
-  passwordState,
-  passwordCorrectState,
-  isValidNicknameState,
-  isValidEmailState,
-  isValidPasswordState,
-  isValidPasswordCorrectState,
-  notAllowState,
-}: RegisterProps) => {
   const [image, setImage] = imageState;
   const [nickname, setNickname] = nicknameState;
   const [email, setEmail] = emailState;
@@ -98,8 +77,12 @@ const Register = ({
     imageInputRef.current?.click();
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLInputElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
+
+    await registerApi({ nickname, email, password });
+
+    alert('success to register');
 
     navigate('/', { replace: true });
   };
